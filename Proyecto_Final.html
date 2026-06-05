@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juan Perez | Desarrollador Full Stack</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+    
+    :root {
+      --primary: 59 130 246;
+    }
+    
+    .tail-container {
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    
+    .logo-font {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .hero-bg {
+      background: linear-gradient(135deg, #1e2937 0%, #0f172a 100%);
+    }
+
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
+
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: rgb(59 130 246);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover:after {
+      width: 100%;
+    }
+
+    .modal {
+      animation: modalPop 0.3s ease forwards;
+    }
+    
+    @keyframes modalPop {
+      from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+  </style>
+</head>
+<body class="tail-container bg-zinc-950 text-zinc-100">
+
+  <nav class="bg-zinc-950/80 backdrop-blur-lg border-b border-zinc-800 fixed w-full z-50">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 bg-blue-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl logo-font">JP</div>
+        <span class="text-2xl font-semibold logo-font tracking-tighter">Juan Perez</span>
+      </div>
+      
+      <div class="hidden md:flex items-center gap-10">
+        <a href="#inicio" class="nav-link text-sm font-medium hover:text-blue-400 transition-colors">Inicio</a>
+        <a href="#sobre" class="nav-link text-sm font-medium hover:text-blue-400 transition-colors">Sobre mí</a>
+        <a href="#proyectos" class="nav-link text-sm font-medium hover:text-blue-400 transition-colors">Proyectos</a>
+        <a href="#habilidades" class="nav-link text-sm font-medium hover:text-blue-400 transition-colors">Habilidades</a>
+        <a href="#contacto" class="nav-link text-sm font-medium hover:text-blue-400 transition-colors">Contacto</a>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button onclick="toggleDarkMode()" class="p-2 hover:bg-zinc-800 rounded-xl transition-colors">
+          <i class="fas fa-moon text-xl"></i>
+        </button>
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2 hover:bg-zinc-800 rounded-xl transition-colors">
+          <i id="menu-icon" class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-zinc-900 border-t border-zinc-800 py-6">
+      <div class="flex flex-col gap-6 px-6 text-lg">
+        <a href="#inicio" onclick="toggleMobileMenu()" class="hover:text-blue-400">Inicio</a>
+        <a href="#sobre" onclick="toggleMobileMenu()" class="hover:text-blue-400">Sobre mí</a>
+        <a href="#proyectos" onclick="toggleMobileMenu()" class="hover:text-blue-400">Proyectos</a>
+        <a href="#habilidades" onclick="toggleMobileMenu()" class="hover:text-blue-400">Habilidades</a>
+        <a href="#contacto" onclick="toggleMobileMenu()" class="hover:text-blue-400">Contacto</a>
+      </div>
+    </div>
+  </nav>
+
+  <section id="inicio" class="hero-bg min-h-screen flex items-center pt-20">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-8">
+        <div class="inline-flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-4 py-2 rounded-3xl text-sm">
+          <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+          Disponible para nuevos proyectos
+        </div>
+        
+        <h1 class="text-6xl md:text-7xl font-bold leading-tight logo-font tracking-tighter">
+          Hola, soy <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">Juan Perez</span>
+        </h1>
+        
+        <p class="text-xl text-zinc-400 max-w-md">
+          Desarrollador Full Stack especializado en crear experiencias digitales excepcionales.
+        </p>
+        
+        <div class="flex gap-4">
+          <a href="#proyectos" 
+             class="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-2xl font-semibold flex items-center gap-3 transition-all active:scale-95">
+            Ver proyectos
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          
+          <a href="#contacto" 
+             class="px-8 py-4 border border-zinc-700 hover:border-zinc-400 rounded-2xl font-semibold transition-all">
+            Contactarme
+          </a>
+        </div>
+
+        <div class="flex items-center gap-8 text-zinc-500">
+          <div class="flex items-center gap-2">
+            <i class="fab fa-github"></i>
+            <span class="text-sm">45 repos</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fab fa-linkedin"></i>
+            <span class="text-sm">Conectado</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative flex justify-center">
+        <div class="relative">
+          <img id="hero-image" 
+               src="https://picsum.photos/id/338/600/700" 
+               alt="Juan Perez"
+               class="w-80 md:w-96 rounded-3xl shadow-2xl border border-zinc-700 object-cover">
+          <div class="absolute -bottom-6 -right-6 bg-zinc-900 border border-zinc-700 rounded-3xl p-6 shadow-xl">
+            <div class="text-center">
+              <div class="text-4xl font-bold text-blue-400">2+</div>
+              <div class="text-sm text-zinc-400">Años experiencia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <i class="fas fa-chevron-down text-3xl text-zinc-500"></i>
+    </div>
+  </section>
+
+  <section id="sobre" class="py-24 bg-zinc-900">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row gap-16 items-center">
+        <div class="md:w-5/12">
+          <h2 class="text-5xl font-bold mb-6 logo-font tracking-tight">Sobre mí</h2>
+          <div class="space-y-6 text-zinc-300 leading-relaxed">
+            <p>
+              Soy un desarrollador apasionado por construir productos digitales que marcan la diferencia. 
+              Con experiencia en frontend y backend, me enfoco en crear interfaces intuitivas y sistemas escalables.
+            </p>
+            <p>
+              Cuando no estoy codificando, disfruto del senderismo, la fotografía y aprender nuevos idiomas.
+            </p>
+          </div>
+          
+          <div class="mt-12 grid grid-cols-3 gap-8">
+            <div>
+              <div class="text-4xl font-bold text-blue-500">25</div>
+              <div class="text-zinc-400 text-sm">Proyectos completados</div>
+            </div>
+            <div>
+              <div class="text-4xl font-bold text-blue-500">12</div>
+              <div class="text-zinc-400 text-sm">Clientes felices</div>
+            </div>
+            <div>
+              <div class="text-4xl font-bold text-blue-500">∞</div>
+              <div class="text-zinc-400 text-sm">Cafés consumidos</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="md:w-7/12">
+          <div class="bg-zinc-800 rounded-3xl p-10">
+            <h3 class="font-semibold mb-8 text-xl flex items-center gap-3">
+              <span class="text-blue-500">📍</span> 
+              Actualmente en Asunción, Paraguay
+            </h3>
+            
+            <div class="space-y-8">
+              <div class="flex gap-6">
+                <div class="text-5xl">🚀</div>
+                <div>
+                  <h4 class="font-semibold text-lg">Desarrollo Frontend</h4>
+                  <p class="text-zinc-400">React, Next.js, Tailwind, Framer Motion</p>
+                </div>
+              </div>
+              <div class="flex gap-6">
+                <div class="text-5xl">🗄️</div>
+                <div>
+                  <h4 class="font-semibold text-lg">Backend &amp; Cloud</h4>
+                  <p class="text-zinc-400">Node.js, Python, AWS, PostgreSQL</p>
+                </div>
+              </div>
+              <div class="flex gap-6">
+                <div class="text-5xl">📱</div>
+                <div>
+                  <h4 class="font-semibold text-lg">Mobile &amp; UI/UX</h4>
+                  <p class="text-zinc-400">React Native, Figma</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="habilidades" class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl font-bold logo-font tracking-tight">Habilidades</h2>
+        <p class="text-zinc-400 mt-4">Tecnologías con las que trabajo diariamente</p>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="skills-container">
+      
+      </div>
+    </div>
+  </section>
+
+  <section id="proyectos" class="py-24 bg-zinc-900">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex justify-between items-end mb-12">
+        <div>
+          <h2 class="text-5xl font-bold logo-font tracking-tight">Proyectos destacados</h2>
+          <p class="text-zinc-400">Algunos de mis trabajos más recientes</p>
+        </div>
+        <button onclick="fetchRandomProjects()" 
+                class="hidden md:flex items-center gap-2 text-sm hover:text-blue-400 transition-colors">
+          <i class="fas fa-sync"></i>
+          <span>Actualizar proyectos</span>
+        </button>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+        
+      </div>
+    </div>
+  </section>
+
+  <div id="project-modal" class="hidden fixed inset-0 bg-black/80 z-[100] flex items-center justify-center p-6">
+    <div class="bg-zinc-900 max-w-2xl w-full rounded-3xl modal overflow-hidden">
+      <div class="p-8" id="modal-content">
+       
+      </div>
+      <div class="border-t border-zinc-700 p-6 flex justify-end">
+        <button onclick="closeModal()" 
+                class="px-8 py-3 text-zinc-400 hover:text-white transition-colors">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <section id="contacto" class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-5xl font-bold text-center logo-font tracking-tight mb-4">Hablemos</h2>
+        <p class="text-center text-zinc-400 mb-12">¿Tienes un proyecto en mente? Estoy disponible para colaboraciones.</p>
+        
+        <form id="contact-form" class="space-y-8">
+          <div class="grid grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm text-zinc-400 mb-2">Nombre</label>
+              <input type="text" id="name" 
+                     class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-blue-500 transition-colors"
+                     placeholder="Juan Perez ">
+            </div>
+            <div>
+              <label class="block text-sm text-zinc-400 mb-2">Email</label>
+              <input type="email" id="email" 
+                     class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-blue-500 transition-colors"
+                     placeholder="tu@email.com">
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-sm text-zinc-400 mb-2">Mensaje</label>
+            <textarea id="message" rows="6"
+                      class="w-full bg-zinc-800 border border-zinc-700 rounded-3xl px-6 py-5 focus:outline-none focus:border-blue-500 transition-colors"
+                      placeholder="Cuéntame sobre tu proyecto..."></textarea>
+          </div>
+          
+          <button type="submit"
+                  class="w-full py-6 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-3xl font-semibold text-lg hover:brightness-110 transition-all active:scale-[0.98]">
+            Enviar mensaje
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-black py-16 border-t border-zinc-800">
+    <div class="max-w-7xl mx-auto px-6 text-center text-zinc-500">
+      <p>© 2026 Juan Perez.</p>
+    </div>
+  </footer>
+<script defer src="script_jp.js"></script>
+</body>
+</html>
